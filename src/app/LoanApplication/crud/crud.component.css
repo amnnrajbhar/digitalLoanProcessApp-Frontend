@@ -1,0 +1,29 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.text-warning {
+  color: orange;
+}
+
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}

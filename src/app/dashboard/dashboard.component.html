@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <h2 class="text-center">Home Loan EMI Calculator</h2>
+  <button type="button" class="btn btn-link" style="position: absolute; top: 10px; right: 10px;" (click)="goToLogin()">Back To Home</button>
+
+
+  <div class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <label class="form-label">Loan Amount (₹)</label>
+      <input type="range" class="form-range" [(ngModel)]="loanAmount" min="50000" max="10000000" step="50000" (input)="calculateEMI()">
+      <input type="number" class="form-control mt-2" [(ngModel)]="loanAmount" (input)="calculateEMI()">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Rate of Interest (p.a) %</label>
+      <input type="range" class="form-range" [(ngModel)]="interestRate" min="1" max="15" step="0.1" (input)="calculateEMI()">
+      <input type="number" class="form-control mt-2" [(ngModel)]="interestRate" step="0.1" (input)="calculateEMI()">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Loan Tenure (Years)</label>
+      <input type="range" class="form-range" [(ngModel)]="loanTenure" min="1" max="30" step="1" (input)="calculateEMI()">
+      <input type="number" class="form-control mt-2" [(ngModel)]="loanTenure" (input)="calculateEMI()">
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card p-4 shadow-sm">
+        <h5>Loan Summary</h5>
+        <p><strong>Monthly EMI:</strong> ₹{{ emi | number }}</p>
+        <p><strong>Principal Amount:</strong> ₹{{ loanAmount | number }}</p>
+        <p><strong>Total Interest:</strong> ₹{{ totalInterest | number }}</p>
+        <p><strong>Total Amount Payable:</strong> ₹{{ totalAmount | number }}</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div style="width: 300px; height: 300px;">
+        <canvas baseChart
+          [data]="pieChartData"
+          [type]="pieChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

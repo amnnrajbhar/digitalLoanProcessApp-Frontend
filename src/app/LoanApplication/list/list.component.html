@@ -1,0 +1,32 @@
+
+
+<div class="admin-container">
+  <h2>List of Loan Applications</h2>
+  <button type="button" class="btn btn-link" style="position: absolute; top: 10px; right: 10px;" (click)="goToHome()">Back To Home</button>
+  <button class="btn btn-primary" routerLink="/crud" style="float: right;">+ Add New Loan Application</button>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Tenure</th>
+        <th>Income</th>
+        <th>Purpose</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of loans">
+        <td>{{ loan.amount }}</td>
+        <td>{{ loan.tenure }}</td>
+        <td>{{ loan.income }}</td>
+        <td>{{ loan.purpose }}</td>
+        <td>
+          <span [ngClass]="{'text-warning': loan.status === 'Pending', 'text-success': loan.status === 'Approved', 'text-danger': loan.status === 'Rejected'}">
+            {{ loan.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

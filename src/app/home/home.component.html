@@ -1,0 +1,89 @@
+<nav class="container-fluid">
+  <button type="button" class="btn btn-link" style="position: absolute; top: 10px; right: 10px;" (click)="goToLogin()">Back To Login</button>
+  <div class="row justify-content-center">
+    <!-- For large screens, each column takes 4 columns; for medium and smaller screens, each column takes full width -->
+    <div class="col-lg-6 col-md-6 col-12">
+      <div class="nav-box">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12">
+      <div class="nav-box">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/list">Loan Application</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12">
+      <div class="nav-box">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/eligibility">Check Eligibility</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12" *ngIf="isAdmin">
+      <div class="nav-box">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Add this CSS to style the boxes and transitions -->
+<style>
+  .nav-box {
+    background-color: #f8f9fa;  /* Light grey background */
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;  /* Smooth transition for background color */
+  }
+
+  .nav-box:hover {
+    background-color: #dcdcdc;  /* Darker grey on hover */
+    border: #000 solid 1px;
+  }
+
+  .nav-link {
+    color: #000;  /* Default link color */
+  }
+
+  .nav-link:hover {
+    color: #ff6f00;  /* Change link color on hover */
+  }
+
+  /* Center the content horizontally and vertically */
+  .container-fluid {
+    display: flex;
+    justify-content: center;  /* Horizontal centering */
+    align-items: center;      /* Vertical centering */
+    height: 100vh;            /* Full height of viewport */
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;  /* Center items inside the row */
+  }
+
+  /* Ensure proper padding and margins for mobile responsiveness */
+  .nav-box {
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 767px) {
+    .nav-box {
+      margin-bottom: 10px;
+    }
+  }
+</style>

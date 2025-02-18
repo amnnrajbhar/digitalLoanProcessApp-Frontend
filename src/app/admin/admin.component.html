@@ -1,0 +1,36 @@
+<div class="container-fluid admin-container">
+  <h2 class="text-center my-3">Admin Loan Management</h2>
+  <button type="button" class="btn btn-link" style="position: absolute; top: 10px; right: 10px;" (click)="goToLogin()">Back To Home</button>
+  <!-- Display error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">{{ errorMessage }}</div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table text-center">
+        <tr>
+          <th>Amount</th>
+          <th>Tenure</th>
+          <th>Income</th>
+          <th>Purpose</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans">
+          <td>{{ loan.amount }}</td>
+          <td>{{ loan.tenure }}</td>
+          <td>{{ loan.income }}</td>
+          <td>{{ loan.purpose }}</td>
+          <td>{{ loan.status }}</td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-success btn-sm" (click)="approveLoan(loan._id)" [disabled]="loan.status !== 'Pending'">Approve</button>
+              <button class="btn btn-danger btn-sm" (click)="rejectLoan(loan._id)" [disabled]="loan.status !== 'Pending'">Reject</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

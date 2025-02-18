@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Loan Eligibility Checker</h2>
+  <form [formGroup]="loanForm" (ngSubmit)="checkLoanEligibility()" class="shadow p-4 rounded bg-light">
+    <div class="mb-3">
+      <label for="income" class="form-label">Income:</label>
+      <input id="income" type="number" formControlName="income" placeholder="Enter your income" required class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label for="creditScore" class="form-label">Credit Score:</label>
+      <input id="creditScore" type="number" formControlName="creditScore" placeholder="Enter credit score (300-850)" required class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label for="employmentStatus" class="form-label">Employment Status:</label>
+      <select id="employmentStatus" formControlName="employmentStatus" required class="form-select">
+        <option value="employed">Employed</option>
+        <option value="self-employed">Self-Employed</option>
+        <option value="unemployed">Unemployed</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="loanAmount" class="form-label">Loan Amount:</label>
+      <input id="loanAmount" type="number" formControlName="loanAmount" placeholder="Enter loan amount" required class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="loanForm.invalid || isLoading">
+      {{ isLoading ? 'Checking...' : 'Check Eligibility' }}
+    </button>
+  </form>
+
+  <div *ngIf="eligibilityResult" class="result mt-4">
+    <h3>AI Decision:</h3>
+    <div *ngIf="eligibilityResult.indexOf('Not') === -1">
+      <p class="text-success">{{ eligibilityResult }}</p>
+      <!-- <button type="button" class="btn btn-link" (click)="onLoginClick()">Login</button> -->
+    </div>
+    <div *ngIf="eligibilityResult.indexOf('Not') === 0">
+      <p class="text-danger">{{ eligibilityResult }}</p>
+    </div>
+  </div>
+  <button type="button" routerLink="/login" class="btn btn-link w-100 mt-3">Go To Login</button>
+</div>
